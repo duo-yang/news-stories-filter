@@ -92,7 +92,7 @@ def setup_database():
 
 # Functions to insert data
 # into the database here.
-def insert_story(story):
+def insert_story(story, commit=True):
     conn, cur = get_connection_and_cursor()
 
     query = sql.SQL("""INSERT INTO \"Stories\" (\"title\", \"byline\",
@@ -143,11 +143,12 @@ def insert_story(story):
             query_string = query.as_string(conn)
             cur.execute(query_string)
 
-    conn.commit()
+    if commit:
+        conn.commit()
 
 
 # Search stories
-def search_stories(key_word):
+def search_stories(key_word, commit=True):
     conn, cur = get_connection_and_cursor()
 
     query = sql.SQL("""SELECT DISTINCT \"title\", \"byline\", \"summary\", 
@@ -163,12 +164,13 @@ def search_stories(key_word):
 
     key_stories = cur.fetchall()
 
-    conn.commit()
+    if commit:
+        conn.commit()
 
     return key_stories
 
 
-def avoid_stories(key_word):
+def avoid_stories(key_word, commit=True):
     conn, cur = get_connection_and_cursor()
 
     query = sql.SQL("""SELECT DISTINCT \"title\", \"byline\", \"summary\",
@@ -186,6 +188,7 @@ def avoid_stories(key_word):
 
     key_stories = cur.fetchall()
 
-    conn.commit()
+    if commit:
+        conn.commit()
 
     return key_stories

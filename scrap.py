@@ -4,11 +4,21 @@ from caching import get_soup_from_url
 DEBUG = False
 
 
-todays_soup = get_soup_from_url(
-    'http://www.nytimes.com/pages/todayspaper/index.html')
+todays_soup = None
 
-front_page_soup = todays_soup.find('div', {'class': 'aColumn'})
-other_sections_soup = todays_soup.find('div', {'id': 'SpanABMiddleRegion'})
+front_page_soup = None
+other_sections_soup = None
+
+
+def scrap_setup():
+    global todays_soup
+    global front_page_soup
+    global other_sections_soup
+    todays_soup = get_soup_from_url(
+        'http://www.nytimes.com/pages/todayspaper/index.html')
+
+    front_page_soup = todays_soup.find('div', {'class': 'aColumn'})
+    other_sections_soup = todays_soup.find('div', {'id': 'SpanABMiddleRegion'})
 
 
 # Extract news story data
@@ -127,6 +137,8 @@ def load_articles_from_headlines_only(section_soup):
 
 
 def load_page():
+    scrap_setup()
+
     if DEBUG:
         print('The Front Page'.upper())
 

@@ -7,8 +7,6 @@ import db_utils
 
 app = Flask(__name__)
 
-set_up()
-
 
 @app.route('/')
 @app.route('/avoid')
@@ -114,4 +112,5 @@ def server_error(e):
 
 
 if __name__ == '__main__':
+    set_up()
     app.run()

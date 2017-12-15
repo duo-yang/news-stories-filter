@@ -18,7 +18,7 @@ DEFAULT_EXPIRATION_IN_DAYS = 3
 DEFAULT_BASE_URL = ""
 DEFAULT_API_KEYS = []
 
-DEBUG = True
+DEBUG = False
 
 
 # Load cache file
