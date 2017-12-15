@@ -102,3 +102,5 @@ ENV/
 
 cache/
 db_config.py
+cache_file.json
+html_cache.html

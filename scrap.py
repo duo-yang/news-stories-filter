@@ -1,7 +1,7 @@
 from caching import get_soup_from_url
 
 
-DEBUG = True
+DEBUG = False
 
 
 todays_soup = get_soup_from_url(
@@ -124,3 +124,27 @@ def load_articles_from_headlines_only(section_soup):
             print()
 
     return story_list
+
+
+def load_page():
+    if DEBUG:
+        print('The Front Page'.upper())
+
+    top_stories = load_articles_from_section(front_page_soup)
+    other_stories = load_articles_from_headlines_only(front_page_soup.find(
+        'ul', {'class': 'headlinesOnly'}))
+
+    for section_soup in other_sections_soup.find_all(
+            'ul', {'class': 'headlinesOnly'}):
+        section_title = section_soup.parent.find(
+            'h3', {'class': 'sectionHeader'}).text.strip()
+        if DEBUG:
+            print()
+            print('=' * len(section_title))
+            print(section_title.upper())
+            print('=' * len(section_title))
+            print()
+
+        other_stories.extend(load_articles_from_headlines_only(section_soup))
+
+    return top_stories, other_stories

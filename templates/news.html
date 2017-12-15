@@ -1,0 +1,48 @@
+{% extends "index.html" %}
+
+{% block content %}
+<main class="w3-container w3-padding-32">
+    <h1 class="w3-center">Your <i>New York Times</i> {{ joinword }}
+        <b>"{{ keyword }}"</b>
+    </h1>
+    <section class="w3-row w3-white"
+             style="padding: 4px 32px; margin-top: 32px;">
+        <h2>TOP STORIES</h2>
+    </section>
+    {% for story in top_stories %}
+    <section class="w3-row w3-white w3-hover-black" style="padding: 8px 32px">
+        <a href={{ story.url }}>
+            <div class="w3-col l11 m12 s12">
+                <h3>{{ story.title }}</h3>
+                <h6>{{ story.byline }}</h6>
+                <p>{{ story.summary }}</p>
+            </div>
+            <img class="w3-col l1 m12 s12"
+                 style="max-width: 120px; margin: 10px 0;" alt="News thumbnail"
+                 src={{ story.thumbnail }}>
+        </a>
+    </section>
+    {% endfor %}
+
+    <section class="w3-row w3-white"
+             style="padding: 4px 32px; margin-top: 32px;">
+        <h2>OTHER STORIES</h2>
+    </section>
+    {% for story in other_stories %}
+    <section class="w3-row w3-white w3-hover-black" style="padding: 8px 32px">
+        <a href={{ story.url }}>
+            <div class="w3-col l11 m12 s12">
+                <h3>{{ story.title }}</h3>
+                <h6>{{ story.byline }}</h6>
+            </div>
+        </a>
+    </section>
+    {% endfor %}
+</main>
+<form class=" w3-center w3-bottom"
+      action="/">
+    <button class="w3-button w3-dark-grey"
+            style="width: 100%; padding: 16px"
+            type="submit">Back</button>
+</form>
+{% endblock %}

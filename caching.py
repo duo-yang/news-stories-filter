@@ -9,9 +9,10 @@ from bs4 import BeautifulSoup as Soup
 
 # Constraints
 
-CACHE_FNAME = 'cache/cache_file.json'
+FILE_ROOT = ''
+CACHE_FNAME = FILE_ROOT + 'cache_file.json'
 TOP_URL = 'http://www.nytimes.com/pages/todayspaper/index.html'
-HTML_CACHE_FILE = 'cache/html_cache.html'
+HTML_CACHE_FILE = FILE_ROOT + 'html_cache.html'
 DATETIME_FORMAT = "%Y-%m-%d %H:%M:%S.%f"
 DEFAULT_EXPIRATION_IN_DAYS = 3
 DEFAULT_BASE_URL = ""
