@@ -1,4 +1,4 @@
-# News Stories filter
+# News Stories Filter
 Course Project for SI 507
 
 This project aims to provide a site enable the reader to 'beep' certain keywords on the [New York Times Today's Newspaper](http://www.nytimes.com/pages/todayspaper/index.html) site LOCALLY on their browser and provide a better interface for reading news.
